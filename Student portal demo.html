@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      background: #3498db;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #3498db;
+      color: #fff;
+    }
+    #loginBox {
+      text-align: center;
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Student Portal</h1>
+  </header>
+
+  <div class="container" id="loginBox">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Enter Student ID" /><br />
+    <input type="password" id="password" placeholder="Enter Password" /><br />
+    <button class="btn" onclick="login()">Login</button>
+  </div>
+
+  <div class="container" id="portal" style="display:none;">
+    <h2>Welcome, <span id="studentName"></span></h2>
+    <p><strong>Student ID:</strong> <span id="studentID"></span></p>
+    <h3>Your Courses</h3>
+    <table>
+      <tr>
+        <th>Course Code</th>
+        <th>Course Name</th>
+        <th>Grade</th>
+      </tr>
+      <tr>
+        <td>CS101</td>
+        <td>Computer Fundamentals</td>
+        <td>A</td>
+      </tr>
+      <tr>
+        <td>MATH201</td>
+        <td>Calculus II</td>
+        <td>B+</td>
+      </tr>
+      <tr>
+        <td>PHY105</td>
+        <td>Physics Basics</td>
+        <td>A-</td>
+      </tr>
+    </table>
+    <br />
+    <button class="btn" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username === "12345" && password === "demo") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("portal").style.display = "block";
+        document.getElementById("studentName").innerText = "John Doe";
+        document.getElementById("studentID").innerText = username;
+      } else {
+        alert("Invalid ID or Password!");
+      }
+    }
+    function logout() {
+      document.getElementById("portal").style.display = "none";
+      document.getElementById("loginBox").style.display = "block";
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+    }
+  </script>
+</body>
+</html>
